@@ -1,11 +1,15 @@
 // import myCamera from './gamemain.js'
 
 class MyGame{
-	constructor(){
+	constructor() {
+		const NUM_OF_LIGHT = 15;
 		this.frame = 0;
 		this.petal = new Petal();
 		this.blossoms = [];
-		this.light = new FireFly();
+		this.lights = [];
+		for (var i = 0; i < NUM_OF_LIGHT; i++) {
+			this.lights.push(new FireFly());
+		}
 	}
 
 	update() {
@@ -20,5 +24,8 @@ class MyGame{
 		this.blossoms.some(function(blossom, index) {
 			if (blossom.getHasRemoved()) this.blossoms.splice(index, 1);
 		}.bind(this));
+		this.lights.forEach(function(light) {
+			light.update();
+		});
 	}
 }

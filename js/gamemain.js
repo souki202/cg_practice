@@ -20,6 +20,7 @@ class MyScene {
 		this.camera.up.set(0, 1, 0);
 		//カメラの中心位置ベクトルの設定
 		this.camera.lookAt({ x: 0, y: 10, z: 0 }); //
+		this.cameraPos = {x:0, y:10, z:0};
 
 		//トラックボールオブジェクトの宣言
 		this.controls = new THREE.OrbitControls(this.camera, this.canvasFrame);
