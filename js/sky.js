@@ -1,18 +1,21 @@
 class Sky {
   constructor() {
-    var ambientLight = new THREE.AmbientLight(0xffeeee, 0.4);
-    myScene.scene.add(ambientLight);
+    // var ambientLight = new THREE.AmbientLight(0xffeeee, 0);
+    // myScene.scene.add(ambientLight);
 
-    // var spotLight = new THREE.SpotLight(0xffeeee, 0.5);
-    // spotLight.position.set(500, 1000, 500);
-    // spotLight.castShadow = true;
-    // spotLight.shadowMapWidth = 4192;
-    // spotLight.shadowMapHeight = 4192;
-    // spotLight.shadowCameraNear = 1;
-    // spotLight.shadowCameraFar = 2000;
-    // spotLight.shadowCameraFov = 45;
-    // spotLight.shadowCameraVisible = true;
-    // spotLight.distance = 10000;
-    // myScene.scene.add(spotLight);
+    // テクスチャ読み込み
+    var texture = new THREE.TextureLoader().load("obj/sky.jpg");
+    texture.anisotropy = myScene.renderer.getMaxAnisotropy();
+    texture.mapping = THREE.UVMapping;
+
+    // 背景用
+    var geometry = new THREE.SphereGeometry(1024, 32, 32);
+    geometry.scale(-1, 1, 1);
+    var material = new THREE.MeshBasicMaterial({
+      map: texture,
+      fog: false,
+    });
+    var bgMesh = new THREE.Mesh(geometry, material);
+    myScene.scene.add(bgMesh);
   }
 }

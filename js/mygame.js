@@ -10,6 +10,10 @@ class MyGame{
 		for (var i = 0; i < NUM_OF_LIGHT; i++) {
 			this.lights.push(new FireFly());
 		}
+		this.reflecs = [];
+		for (var i = 0; i < 4; i++) {
+			this.reflecs.push(new ReflecCube(Math.PI / 2 * i));
+		}
 	}
 
 	update() {
@@ -26,6 +30,9 @@ class MyGame{
 		}.bind(this));
 		this.lights.forEach(function(light) {
 			light.update();
+		});
+		this.reflecs.forEach(function(reflec) {
+			reflec.update();
 		});
 	}
 }

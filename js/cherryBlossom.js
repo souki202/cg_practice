@@ -29,10 +29,11 @@ class CherryBlossoms {
       this.pos.y += this.floatSpeed * 0.5;
     }
     else this.pos.y += this.floatSpeed;
+    
     this.cube.position.set(this.pos.x, this.pos.y, this.pos.z);
     this.cube.rotation.set(0, this.rad, 0);
 
-    if (this.pos.y > 2000) {
+    if (this.pos.y > 800) {
       myScene.scene.remove(this.cube);
       this.geometry.dispose();
       this.material.dispose();
